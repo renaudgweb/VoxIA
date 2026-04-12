@@ -1,0 +1,8 @@
+.env
+whisperx-env/
+__pycache__/
+*.pyc
+*.mp3
+*.mp4
+transcription_finale.txt
+transcription_nommee.txt
