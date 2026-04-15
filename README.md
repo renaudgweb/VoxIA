@@ -1,6 +1,24 @@
-# 🎙️ Transcription de réunions avec WhisperX
+<p align="center">
+  <img src="assets/logo.png" alt="VoxIA logo" width="200"/>
+</p>
 
-Outil de transcription automatique de réunions audio/vidéo avec identification des locuteurs (diarisation), basé sur [WhisperX](https://github.com/m-bain/whisperX) et [pyannote.audio](https://github.com/pyannote/pyannote-audio).
+# 🎙️ VoxIA — Transcription intelligente avec WhisperX
+
+**VoxIA** est un outil de transcription automatique de réunions audio/vidéo avec identification des locuteurs (diarisation).
+
+Basé sur :
+- WhisperX (transcription rapide et précise)
+- pyannote.audio (diarisation des intervenants)
+
+---
+
+## ✨ Fonctionnalités
+
+- 📝 Transcription audio → texte
+- 🎯 Alignement précis des timestamps
+- 🧑‍🤝‍🧑 Identification automatique des locuteurs
+- ⚡ Utilisable en local (CPU ou GPU)
+- 🔐 Traitement local des données (aucun envoi externe)
 
 ---
 
