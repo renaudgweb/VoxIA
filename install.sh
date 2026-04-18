@@ -59,25 +59,46 @@ ok "pip mis à jour"
 # ============================================================
 # ÉTAPE 4 : INSTALLATION DES PAQUETS
 # ============================================================
-echo -e "\n📥 Installation de PyTorch (CPU)..."
-pip install torch torchvision torchaudio -q
-ok "PyTorch installé"
 
-echo -e "\n📥 Installation de WhisperX..."
-pip install whisperx -q
-ok "WhisperX installé"
+# pour mettre à jour volontairement :
+# pip install --upgrade whisperx pyannote.audio
+# pip freeze > requirements.txt  # puis commite
 
-echo -e "\n📥 Installation de Pyannote..."
-pip install pyannote.audio -q
-ok "Pyannote installé"
+if [ -f "requirements.txt" ]; then
+    echo -e "\n📥 requirements.txt trouvé — installation depuis le fichier figé..."
+    pip install -r requirements.txt -q
+    ok "Paquets installés depuis requirements.txt"
+else
+    warn "Aucun requirements.txt trouvé — installation des paquets un par un..."
 
-echo -e "\n📥 Installation de Pandas / Numpy..."
-pip install pandas numpy -q
-ok "Pandas et Numpy installés"
+    echo -e "\n📥 Installation de PyTorch (CPU)..."
+    pip install torch torchvision torchaudio -q
+    ok "PyTorch installé"
 
-echo -e "\n📥 Installation de python-dotenv..."
-pip install python-dotenv -q
-ok "python-dotenv installé"
+    echo -e "\n📥 Installation de WhisperX..."
+    pip install whisperx -q
+    ok "WhisperX installé"
+
+    echo -e "\n📥 Installation de Pyannote..."
+    pip install pyannote.audio -q
+    ok "Pyannote installé"
+
+    echo -e "\n📥 Installation de Pandas / Numpy..."
+    pip install pandas numpy -q
+    ok "Pandas et Numpy installés"
+
+    echo -e "\n📥 Installation de python-dotenv..."
+    pip install python-dotenv -q
+    ok "python-dotenv installé"
+
+    echo -e "\n📄 Génération du requirements.txt..."
+    pip freeze > requirements.txt
+    ok "requirements.txt généré — pense à le commiter dans Git !"
+fi
+
+# ============================================================
+# ÉTAPE 5 : FICHIERS DE CONFIG
+# ============================================================
 
 # Créer le .env s'il n'existe pas
 if [ ! -f ".env" ]; then
@@ -98,13 +119,6 @@ transcription_finale.txt
 EOF
     ok ".gitignore créé"
 fi
-
-# ============================================================
-# ÉTAPE 5 : GÉNÉRATION DU requirements.txt
-# ============================================================
-echo -e "\n📄 Génération du requirements.txt..."
-pip freeze > requirements.txt
-ok "requirements.txt généré"
 
 # ============================================================
 # ÉTAPE 6 : VÉRIFICATION
